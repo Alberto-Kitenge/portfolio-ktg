@@ -29,7 +29,7 @@ const Footer = () => {
                   />
                 </div>
               </div>
-              <h2 className="font-bold text-xl text-primary">
+              <h2 className="font-bold text-xl text-accent">
                 {userIdentity.name}
               </h2>
             </div>

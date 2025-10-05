@@ -7,24 +7,19 @@ import img from "../assets/img.png";
 
 /**
  * Composant de navigation principal avec support multilingue
- * Navigation fixe au scroll avec photo de profil
+ * Navigation fixe en haut de page avec photo de profil
  */
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
   const { t } = useLanguage();
 
   // Récupération des données d'identité
   const userIdentity = identity[0];
 
   /**
-   * Gère le scroll pour rendre la navbar fixe
+   * Gère la fermeture du menu au clic extérieur
    */
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-
     const handleClickOutside = (event: MouseEvent) => {
       const target = event.target as Element;
       if (!target.closest(".navbar-start")) {
@@ -32,11 +27,9 @@ const Navbar = () => {
       }
     };
 
-    window.addEventListener("scroll", handleScroll);
     document.addEventListener("click", handleClickOutside);
 
     return () => {
-      window.removeEventListener("scroll", handleScroll);
       document.removeEventListener("click", handleClickOutside);
     };
   }, []);
@@ -57,11 +50,7 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`navbar bg-base-100/90 backdrop-blur-md rounded-xl shadow-lg transition-all duration-500 ease-in-out ${
-        isScrolled
-          ? "fixed top-2 left-2 right-2 z-50 mx-auto max-w-7xl animate-slideDown"
-          : ""
-      }`}
+      className="navbar bg-base-100/90 backdrop-blur-md rounded-xl shadow-lg transition-all duration-500 ease-in-out fixed top-2 left-2 right-2 z-50 mx-auto max-w-7xl"
       style={{
         transitionProperty: "all, transform, opacity, box-shadow",
         transitionTimingFunction: "cubic-bezier(0.4, 0, 0.2, 1)",
@@ -71,7 +60,7 @@ const Navbar = () => {
     >
       <div className="navbar-start">
         {/* Menu mobile */}
-        <div className="relative" onClick={(e) => e.stopPropagation()}>
+        <div className="relative mr-2" onClick={(e) => e.stopPropagation()}>
           <button
             className="btn btn-ghost lg:hidden"
             onClick={toggleMenu}
@@ -83,14 +72,14 @@ const Navbar = () => {
 
           {isMenuOpen && (
             <ul
-              className="absolute top-full left-0 right-0 mt-2 w-screen -ml-5 p-4 menu bg-base-100 shadow-lg z-50"
+              className="absolute top-full left-0 right-0 mt-2 w-screen -ml-5 p-2 menu bg-base-100 shadow-lg z-[100]"
               role="menu"
             >
               <li role="menuitem">
                 <a
                   href="#home"
                   onClick={closeMenu}
-                  className="hover:bg-accent hover:text-accent-content p-3 rounded-lg transition-all duration-300"
+                  className="hover:bg-accent hover:text-accent-content rounded-lg transition-all duration-300"
                 >
                   {t.nav.home}
                 </a>
@@ -99,7 +88,7 @@ const Navbar = () => {
                 <a
                   href="#projects"
                   onClick={closeMenu}
-                  className="hover:bg-accent hover:text-accent-content p-3 rounded-lg transition-all duration-300"
+                  className="hover:bg-accent hover:text-accent-content rounded-lg transition-all duration-300"
                 >
                   {t.nav.projects}
                 </a>
@@ -108,7 +97,7 @@ const Navbar = () => {
                 <a
                   href="#skills"
                   onClick={closeMenu}
-                  className="hover:bg-accent hover:text-accent-content p-3 rounded-lg transition-all duration-300"
+                  className="hover:bg-accent hover:text-accent-content rounded-lg transition-all duration-300"
                 >
                   {t.skills.title}
                 </a>
@@ -117,7 +106,7 @@ const Navbar = () => {
                 <a
                   href="#contact"
                   onClick={closeMenu}
-                  className="hover:bg-accent hover:text-accent-content p-3 rounded-lg transition-all duration-300"
+                  className="hover:bg-accent hover:text-accent-content rounded-lg transition-all duration-300"
                 >
                   {t.nav.contact}
                 </a>

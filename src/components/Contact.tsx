@@ -73,9 +73,7 @@ const Contact = () => {
               <h4 className="font-bold text-base-content mb-2">
                 {t.contact.location}
               </h4>
-              <p className="text-base-content/70 text-sm">
-                {userIdentity.location}
-              </p>
+              <p className="text-accent text-sm">{userIdentity.location}</p>
             </div>
           </div>
 

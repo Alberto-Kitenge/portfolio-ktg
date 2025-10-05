@@ -15,7 +15,7 @@ const Home = () => {
 
   return (
     <section
-      className="min-h-screen w-full flex items-center pb-10"
+      className="min-h-screen w-full flex items-center"
       id="home"
       aria-label="Section d'accueil"
     >
