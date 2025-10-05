@@ -5,11 +5,10 @@
   command = "npm run build"
   # Dossier de publication
   publish = "dist"
-  # Version Node.js
-  environment = { NODE_VERSION = "18" }
 
 [build.environment]
   # Variables d'environnement pour le build
+  NODE_VERSION = "18"
   NODE_ENV = "production"
 
 # Redirections pour SPA (Single Page Application)
