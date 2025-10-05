@@ -27,22 +27,13 @@ export interface Translations {
     scroll_down: string;
   };
 
-  // À propos
-  about: {
-    title: string;
-    frontend_dev: string;
-    frontend_desc: string;
-    backend_dev: string;
-    backend_desc: string;
-    ui_ux: string;
-    ui_ux_desc: string;
-  };
-
   // Projets
   projects: {
     title: string;
     cta_visit: string;
     view_all: string;
+    all_projects: string;
+    close: string;
   };
 
   // Compétences
@@ -84,22 +75,12 @@ export const translations: Record<Language, Translations> = {
       cta_projects: "Voir mes projets",
       scroll_down: "Défiler vers le bas",
     },
-    about: {
-      title: "À propos",
-      frontend_dev: "Développeur Frontend",
-      frontend_desc:
-        "Je suis développeur frontend avec une bonne expérience en React et Next.js.",
-      backend_dev: "Développeur Backend",
-      backend_desc:
-        "Je maîtrise Django et les bases du développement backend pour créer des APIs robustes.",
-      ui_ux: "Passionné de l'UI/UX",
-      ui_ux_desc:
-        "Créer des interfaces utilisateur attrayantes et fonctionnelles est ma priorité.",
-    },
     projects: {
       title: "mes projets",
       cta_visit: "Visiter",
       view_all: "Voir tous les projets",
+      all_projects: "Tous les projets",
+      close: "Fermer",
     },
     skills: {
       title: "Compétences",
@@ -135,22 +116,12 @@ export const translations: Record<Language, Translations> = {
       cta_projects: "View my projects",
       scroll_down: "Scroll down",
     },
-    about: {
-      title: "About",
-      frontend_dev: "Frontend Developer",
-      frontend_desc:
-        "I am a frontend developer with good experience in React and Next.js.",
-      backend_dev: "Backend Developer",
-      backend_desc:
-        "I master Django and backend development basics to create robust APIs.",
-      ui_ux: "UI/UX Enthusiast",
-      ui_ux_desc:
-        "Creating attractive and functional user interfaces is my priority.",
-    },
     projects: {
       title: "my projects",
       cta_visit: "Visit",
       view_all: "View all projects",
+      all_projects: "All projects",
+      close: "Close",
     },
     skills: {
       title: "Skills",

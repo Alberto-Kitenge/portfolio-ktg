@@ -45,48 +45,42 @@ Modifiez le tableau `skills` avec vos technologies :
 
 ```typescript
 export const skills = [
-  { id: 1, name: "Votre Tech", image: "/assets/techno/tech.png", category: "frontend" },
-  // ...
-];
-```
-
-Modifiez le tableau `experiences` avec votre parcours :
-
-```typescript
-export const experiences = [
-  {
-    id: 1,
-    role: "Votre poste",
-    company: "Nom de l'entreprise",
-    period: "Période",
-    description: [
-      "Réalisation 1",
-      "Réalisation 2"
-    ],
-    image: "/assets/companies/logo.png"
+  { 
+    id: 1, 
+    name: "Votre Tech", 
+    image: "/assets/techno/tech.png", 
+    category: "frontend" // ou "backend", "database", "mobile", "tools"
   },
   // ...
 ];
 ```
 
-### 4. Configuration SEO (`src/data/seo.ts`)
+**Catégories disponibles :** `frontend`, `backend`, `database`, `mobile`, `tools`
+
+### 4. Traductions (`src/i18n/translations.ts`)
+
+Personnalisez les textes en français et anglais :
 
 ```typescript
-export const seo = [
-  {
-    keywords: ["Vos mots-clés", "Votre spécialité"],
-    metaDescription: "Votre description pour les moteurs de recherche",
-    homepageText: "Texte d'accueil de votre portfolio"
-  }
-];
+export const translations: Record<Language, Translations> = {
+  fr: {
+    nav: { home: "Accueil", projects: "Projets", ... },
+    userIdentity: { title: "Votre titre", tagline: "Votre accroche" },
+    // ... autres traductions
+  },
+  en: { /* version anglaise */ }
+};
 ```
 
-### 5. Stack technique (`src/data/pages.ts`)
-
-Modifiez la stack dans la page compétences :
+### 5. Configuration des pages (`src/data/pages.ts`)
 
 ```typescript
-{ name: "Compétences", slug: "/skills", enabled: true, stack: ["VosTech","React","etc."] }
+export const pages = [
+  { name: "Accueil", slug: "/", enabled: true, cta: "..." },
+  { name: "Projets", slug: "/projects", enabled: true, displayCount: 3 },
+  { name: "Compétences", slug: "/skills", enabled: true, stack: ["Django", "React", ...] },
+  { name: "Contact", slug: "/contact", enabled: true }
+];
 ```
 
 ## 🖼️ Images à remplacer
@@ -98,94 +92,107 @@ Modifiez la stack dans la page compétences :
 - `public/og-image.jpg` - Image pour les réseaux sociaux (1200x630px)
 
 ### Images optionnelles :
-- `src/assets/techno/` - Logos des technologies
-- `src/assets/companies/` - Logos des entreprises
+- `src/assets/techno/` - Logos des technologies (PNG, SVG, WebP)
 
-## 🌐 Personnalisation des traductions
+## 🌐 Système multilingue
 
-Dans `src/i18n/translations.ts`, vous pouvez :
-- Modifier les textes français et anglais
-- Ajouter de nouvelles langues
-- Personnaliser les messages
+Le portfolio utilise un **contexte React** pour gérer les langues (FR/EN) :
+
+- **LanguageContext** (`src/contexts/LanguageContext.ts`) : Contexte global
+- **LanguageProvider** (`src/contexts/LanguageProvider.tsx`) : Provider qui enveloppe l'app
+- **Hook useLanguage** (`src/hooks/useLanguageContext.ts`) : Hook personnalisé pour accéder aux traductions
+
+Le changement de langue est **instantané** sur toute la page sans rafraîchissement.
 
 ## 🎨 Personnalisation du design
 
-### Couleurs du thème (dans `src/index.css`)
+### Couleurs et thème
+Le projet utilise **Tailwind CSS v4** avec **DaisyUI** pour les composants.
+
+Modifiez les couleurs dans `src/index.css` :
 ```css
-@plugin "daisyui/theme" {
-  name: "votre-theme";
-  --color-primary: oklch(83.392% 0.124 66.558); /* Votre couleur primaire */
-  --color-accent: oklch(70% 0.213 47.604);      /* Votre couleur d'accent */
-  /* ... autres couleurs */
+@theme {
+  --color-primary: /* votre couleur */;
+  --color-accent: /* votre couleur */;
 }
 ```
 
-### Polices
-Ajoutez vos polices dans `index.html` et modifiez le CSS.
-
-## 📱 Meta tags et SEO
-
-Dans `index.html`, modifiez :
-- Le titre de la page
-- La description
-- Les mots-clés
-- L'URL canonique
-- Les données structurées Schema.org
+### Composants UI
+- **Navbar** : Navigation avec sélecteur de langue
+- **Home** : Section hero avec photo et CTA
+- **Projects** : Grille de projets avec filtres
+- **Skills** : Affichage des compétences par catégorie
+- **Contact** : Informations de contact et liens sociaux
+- **Footer** : Pied de page avec copyright
 
 ## 🚀 Déploiement
 
 ### Avant de déployer :
-1. ✅ Remplacez toutes les images
-2. ✅ Modifiez toutes les données personnelles
-3. ✅ Testez en local avec `npm run dev`
-4. ✅ Buildez avec `npm run build`
-5. ✅ Testez le build avec `npm run preview`
+1. ✅ Remplacez toutes les images personnelles
+2. ✅ Modifiez les données dans `src/data/`
+3. ✅ Personnalisez les traductions dans `src/i18n/translations.ts`
+4. ✅ Testez en local : `npm run dev`
+5. ✅ Buildez le projet : `npm run build`
+6. ✅ Prévisualisez le build : `npm run preview`
 
 ### Plateformes supportées :
 - **Vercel** (recommandé) - Configuration dans `vercel.json`
 - **Netlify** - Configuration dans `netlify.toml`
-- **GitHub Pages**
-- **Surge.sh**
+- **GitHub Pages** ou autres hébergeurs statiques
 
-## ⚡ Optimisations
+## ⚡ Stack technique
 
-### Performance :
-- Images optimisées (WebP recommandé)
-- Lazy loading activé
-- Code splitting automatique
+### Technologies utilisées :
+- **React 19** avec TypeScript
+- **Vite** pour le build ultra-rapide
+- **Tailwind CSS v4** pour le styling
+- **DaisyUI** pour les composants UI
+- **Lucide React** pour les icônes
+- **Context API** pour la gestion d'état globale
 
-### SEO :
-- Meta tags complets
-- Schema.org structuré
-- Sitemap automatique
-- Robots.txt
-
-### Accessibilité :
-- WCAG AA respecté
-- Navigation clavier
-- Lecteurs d'écran supportés
+### Architecture :
+```
+src/
+├── components/     # Composants React (Navbar, Home, Projects, etc.)
+├── contexts/       # Contextes React (LanguageContext)
+├── hooks/          # Hooks personnalisés (useLanguageContext)
+├── data/           # Données du portfolio (identity, projects, skills)
+├── i18n/           # Système de traduction (FR/EN)
+└── assets/         # Images et ressources statiques
+```
 
 ## 🔧 Maintenance
 
 ### Ajout de nouveaux projets :
 1. Ajoutez l'image dans `src/assets/projects/`
-2. Modifiez `src/data/projects.ts`
-3. Rebuild et redéployez
+2. Ajoutez le projet dans `src/data/projects.ts`
+3. Rebuild : `npm run build`
 
 ### Mise à jour des compétences :
 1. Modifiez `src/data/skills.ts`
-2. Ajoutez les logos dans `src/assets/techno/`
+2. Ajoutez les logos dans `src/assets/techno/` (formats : PNG, SVG, WebP)
+3. Respectez les catégories : `frontend`, `backend`, `database`, `mobile`, `tools`
 
-### Nouvelles expériences :
-1. Modifiez `src/data/skills.ts` (section experiences)
-2. Ajoutez le logo de l'entreprise si nécessaire
+### Ajout d'une nouvelle langue :
+1. Ajoutez le type dans `src/i18n/translations.ts` : `type Language = "fr" | "en" | "es"`
+2. Ajoutez les traductions dans l'objet `translations`
+3. Mettez à jour le sélecteur de langue dans `Navbar.tsx`
+
+## 📦 Scripts disponibles
+
+```bash
+npm run dev      # Démarre le serveur de développement
+npm run build    # Build de production (TypeScript + Vite)
+npm run preview  # Prévisualise le build de production
+npm run lint     # Vérifie le code avec ESLint
+```
 
 ## 📞 Support
 
-Si vous avez des questions sur la personnalisation :
-- Consultez les commentaires dans le code
-- Vérifiez la structure des données existantes
-- Testez toujours en local avant de déployer
+Pour toute question :
+- Consultez les commentaires dans les fichiers de données (`src/data/`)
+- Vérifiez la structure TypeScript pour les types attendus
+- Testez toujours en local avec `npm run dev` avant de déployer
 
 ---
 

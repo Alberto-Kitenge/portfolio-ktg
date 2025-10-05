@@ -1,3 +1,13 @@
+import imgHTML from "../assets/techno/html.png";
+import imgCSS from "../assets/techno/css.png";
+import imgREACT from "../assets/techno/react.png";
+import imgTAILWIND from "../assets/techno/tailwind.png";
+import imgTYPE from "../assets/techno/typescript.svg";
+import imgNEXT from "../assets/techno/next-js.webp";
+import imgDJANGO from "../assets/techno/django.png";
+import imgPYTHON from "../assets/techno/python.png";
+import imgPRISMA from "../assets/techno/prisma.webp";
+
 // ---------------------------
 // DONNÉES DES COMPÉTENCES TECHNIQUES
 // ---------------------------
@@ -6,81 +16,56 @@ export const skills = [
   {
     id: 1,
     name: "Django",
-    image: "/assets/techno/django.png",
+    image: imgDJANGO,
     category: "backend",
   },
   {
     id: 2,
-    name: "React",
-    image: "/assets/techno/react.png",
-    category: "frontend",
+    name: "Python",
+    image: imgPYTHON,
+    category: "backend",
   },
   {
     id: 3,
-    name: "Next.js",
-    image: "/assets/techno/next-js.webp",
+    name: "React",
+    image: imgREACT,
     category: "frontend",
   },
   {
     id: 4,
-    name: "TypeScript",
-    image: "/assets/techno/typescript.svg",
+    name: "Next.js",
+    image: imgNEXT,
     category: "frontend",
   },
   {
     id: 5,
-    name: "Tailwind CSS",
-    image: "/assets/techno/tailwind.png",
+    name: "Prisma",
+    image: imgPRISMA,
     category: "frontend",
   },
+
   {
     id: 6,
-    name: "Bootstrap",
-    image: "/assets/techno/bootstrap.png",
+    name: "TypeScript",
+    image: imgTYPE,
     category: "frontend",
   },
   {
     id: 7,
-    name: "JavaScript",
-    image: "/assets/techno/js.png",
+    name: "HTML",
+    image: imgHTML,
     category: "frontend",
   },
   {
     id: 8,
-    name: "HTML",
-    image: "/assets/techno/html.png",
+    name: "CSS",
+    image: imgCSS,
     category: "frontend",
   },
-  { id: 9, name: "CSS", image: "/assets/techno/css.png", category: "frontend" },
   {
-    id: 10,
-    name: "Python",
-    image: "/assets/techno/python.png",
-    category: "backend",
-  },
-  {
-    id: 11,
-    name: "PostgreSQL",
-    image: "/assets/techno/postgresql.png",
-    category: "database",
-  },
-  {
-    id: 12,
-    name: "MySQL",
-    image: "/assets/techno/mysql.png",
-    category: "database",
-  },
-  {
-    id: 13,
-    name: "FlutterFlow",
-    image: "/assets/techno/flutterflow.png",
-    category: "mobile",
-  },
-  { id: 14, name: "Git", image: "/assets/techno/git.png", category: "tools" },
-  {
-    id: 15,
-    name: "Docker",
-    image: "/assets/techno/docker.png",
-    category: "tools",
+    id: 9,
+    name: "Tailwind CSS",
+    image: imgTAILWIND,
+    category: "frontend",
   },
 ];

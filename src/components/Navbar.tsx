@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { useLanguage } from "../hooks/useLanguageContext";
 import { identity } from "../data/identity";
 import LanguageSelector from "./LanguageSelector";
-import img from "../assets/img.jpg";
+import img from "../assets/img.png";
 
 /**
  * Composant de navigation principal avec support multilingue
@@ -57,9 +57,15 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`navbar bg-base-100/90 backdrop-blur-md rounded-xl shadow-lg transition-all duration-300 ${
-        isScrolled ? "fixed top-2 left-2 right-2 z-50 mx-auto max-w-7xl" : ""
+      className={`navbar bg-base-100/90 backdrop-blur-md rounded-xl shadow-lg transition-all duration-500 ease-in-out ${
+        isScrolled
+          ? "fixed top-2 left-2 right-2 z-50 mx-auto max-w-7xl animate-slideDown"
+          : ""
       }`}
+      style={{
+        transitionProperty: "all, transform, opacity, box-shadow",
+        transitionTimingFunction: "cubic-bezier(0.4, 0, 0.2, 1)",
+      }}
       role="navigation"
       aria-label="Main navigation"
     >

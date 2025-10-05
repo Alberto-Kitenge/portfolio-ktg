@@ -3,15 +3,6 @@ import { skills } from "../data/skills";
 import { pages } from "../data/pages";
 import { useLanguage } from "../hooks/useLanguageContext";
 
-// Images temporaires pour les compétences (à remplacer par les vraies images)
-import imgHTML from "../assets/techno/html.png";
-import imgCSS from "../assets/techno/css.png";
-import imgJS from "../assets/techno/js.png";
-import imgREACT from "../assets/techno/react.png";
-import imgTAILWIND from "../assets/techno/tailwind.png";
-import imgTYPE from "../assets/techno/typescript.svg";
-import imgNEXT from "../assets/techno/next-js.webp";
-
 /**
  * Composant des compétences techniques
  * Affiche uniquement les technologies maîtrisées
@@ -22,19 +13,6 @@ const Skills = () => {
   // Configuration depuis les pages
   const skillsPage = pages.find((page) => page.slug === "/skills");
   const skillStack = skillsPage?.stack || [];
-
-  // Images temporaires pour les compétences
-  const tempSkillImages: Record<string, string> = {
-    Django: imgREACT, // Remplacer par l'image Django
-    React: imgREACT,
-    "Next.js": imgNEXT,
-    TypeScript: imgTYPE,
-    Tailwind: imgTAILWIND,
-    Bootstrap: imgCSS,
-    JavaScript: imgJS,
-    HTML: imgHTML,
-    CSS: imgCSS,
-  };
 
   // Filtrer les compétences selon la stack définie
   const displayedSkills = skills.filter((skill) =>
@@ -69,9 +47,9 @@ const Skills = () => {
                 className="flex flex-col items-center group animate-in fade-in slide-in-from-bottom duration-700"
                 style={{ animationDelay: `${index * 100}ms` }}
               >
-                <div className="w-20 h-20 p-3 rounded-full border-2 border-accent/30 group-hover:border-accent transition-all duration-300 bg-base-100 shadow-lg group-hover:shadow-xl group-hover:scale-105">
+                <div className="w-20 h-20 p-3 rounded-full group-hover:border-accent transition-all duration-300 bg-base-100 shadow-lg group-hover:shadow-xl group-hover:scale-105">
                   <img
-                    src={tempSkillImages[skill.name] || imgHTML}
+                    src={skill.image}
                     alt={`Logo ${skill.name}`}
                     className="object-contain w-full h-full"
                     loading="lazy"

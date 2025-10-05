@@ -1,7 +1,7 @@
 import { Github, Linkedin, Mail } from "lucide-react";
 import { useLanguage } from "../hooks/useLanguageContext";
 import { identity } from "../data/identity";
-import img from "../assets/img.jpg";
+import img from "../assets/img.png";
 
 /**
  * Composant Footer avec informations de contact et navigation

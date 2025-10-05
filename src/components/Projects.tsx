@@ -3,11 +3,8 @@ import { ExternalLink } from "lucide-react";
 import { useLanguage } from "../hooks/useLanguageContext";
 import { projects } from "../data/projects";
 import { pages } from "../data/pages";
-
-// Images par défaut pour les projets (à remplacer par les vraies images)
-import img1 from "../assets/projects/1.png";
-import img2 from "../assets/projects/2.png";
-import img3 from "../assets/projects/3.png";
+import { useState } from "react";
+import AllProjectsModal from "./AllProjectsModal";
 
 /**
  * Composant d'affichage des projets
@@ -15,13 +12,11 @@ import img3 from "../assets/projects/3.png";
  */
 const Projects = () => {
   const { t } = useLanguage();
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   // Configuration de la page projets
   const projectsPage = pages.find((page) => page.slug === "/projects");
-  const displayCount = projectsPage?.displayCount || 3;
-
-  // Images temporaires (à remplacer par les vraies images des projets)
-  const tempImages = [img1, img2, img3];
+  const displayCount = projectsPage?.displayCount || 6;
 
   // Projets à afficher (limité selon la configuration)
   const projectsToShow = projects.slice(0, displayCount);
@@ -51,7 +46,7 @@ const Projects = () => {
               {/* Image du projet */}
               <div className="relative overflow-hidden rounded-xl mb-4">
                 <img
-                  src={tempImages[index] || tempImages[0]}
+                  src={project.image}
                   alt={`Aperçu du projet ${project.title}`}
                   className="w-full object-cover h-48 hover:scale-105 transition-transform duration-300"
                   loading="lazy"
@@ -106,16 +101,22 @@ const Projects = () => {
         {/* Lien vers tous les projets si il y en a plus */}
         {projects.length > displayCount && (
           <div className="text-center mt-8">
-            <a
-              href="#projects-all"
+            <button
+              onClick={() => setIsModalOpen(true)}
               className="btn btn-outline btn-accent"
               aria-label={`${t.projects.view_all} (${projects.length})`}
             >
               {t.projects.view_all} ({projects.length})
-            </a>
+            </button>
           </div>
         )}
       </div>
+
+      {/* Modal pour tous les projets */}
+      <AllProjectsModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+      />
     </section>
   );
 };
